@@ -1,4 +1,5 @@
 const sender = require("../config/emailconfig");
+const TicketRepository=require('../repository/ticketreposistory');
 const sendBasicEmail = async (from, to, subject, mailBody) => {
   try {
     const response=await sender.sendMail({
@@ -13,6 +14,18 @@ const sendBasicEmail = async (from, to, subject, mailBody) => {
     console.log(error);
   }
 };
+
+const fetchPendingEmails=async(timestamp)=>{
+    try {
+        const repo=new TicketRepository();
+        const response=await repo.getAllTickets();
+        return response;
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 module.exports = {
   sendBasicEmail,
+  fetchPendingEmails
 };

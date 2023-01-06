@@ -3,7 +3,8 @@ const bodyParser=require("body-parser");
 const {PORT}=require("./config/serverconfig")
 //const {sendBasicEmail}=require('./services/emailservice');
 
-const cron = require('node-cron');
+//const cron = require('node-cron');
+const jobs=require('./utils/job');
 const setupandstartservice=async()=>{
     const app=express();
     app.use(bodyParser.json);
@@ -18,9 +19,10 @@ const setupandstartservice=async()=>{
     //     'this is a tester mail',
     //     'this we will be able to lead the team',
     //    )
-    cron.schedule('*/2 * * * *', () => {
-        console.log('running a task every two minutes');
-      });
+    // cron.schedule('*/2 * * * *', () => {
+    //     console.log('running a task every two minutes');
+    //   });
+    jobs();
     })
 }
 setupandstartservice();
