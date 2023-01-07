@@ -29,7 +29,7 @@ const fetchPendingEmails=async(timestamp)=>{
 const createNotification=async(data)=>{
     try {
         const repo=new TicketRepository();
-        const response=await repo.create();
+        const response=await repo.create(data);
         return response;
     } catch (error) {
         console.log(error);
