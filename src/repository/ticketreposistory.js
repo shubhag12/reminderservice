@@ -9,12 +9,11 @@ class TicketRepository {
       throw error;
     }
   }
-  async update(ticketstatus,ticketid) {
+  async update(ticketstatus, ticketid) {
     try {
-        const ticket = await NotificationTicket.findByPk(ticketid);
-        if(ticketstatus.status)
-          ticket.status=ticketstatus.status
-        await ticket.save();
+      const ticket = await NotificationTicket.findByPk(ticketid);
+      if (ticketstatus.status) ticket.status = ticketstatus.status;
+      await ticket.save();
       return ticket;
     } catch (error) {
       throw error;

@@ -35,18 +35,22 @@ const createNotification = async (data) => {
     console.log(error);
   }
 };
-const updateTickets = async (data,ticketid) => {
+const updateTickets = async (data, ticketid) => {
   try {
     const repo = new TicketRepository();
-    const response = await repo.update(data,ticketid);
+    const response = await repo.update(data, ticketid);
     return response;
   } catch (error) {
     throw error;
   }
+};
+const testingQueue = async (data) => {
+  console.log("inside service layer", data);
 };
 module.exports = {
   updateTickets,
   sendBasicEmail,
   fetchPendingEmails,
   createNotification,
+  testingQueue,
 };
