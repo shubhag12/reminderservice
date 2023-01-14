@@ -46,6 +46,7 @@ const updateTickets = async (data, ticketid) => {
 };
 const testingQueue = async (data) => {
   console.log("inside service layer", data);
+  
 };
 module.exports = {
   updateTickets,

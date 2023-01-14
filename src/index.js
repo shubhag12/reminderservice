@@ -5,7 +5,7 @@ const { PORT } = require("./config/serverconfig");
 const TicketController = require("./controllers/ticket-controller");
 const { subscribeMessage, createChannel } = require("./utils/messageQueue");
 const { REMINDER_BINDING_KEY } = require("./config/serverconfig");
-
+const emailservice=require('./services/emailservice')
 //const cron = require('node-cron');
 const jobs = require("./utils/job");
 const setupandstartservice = async () => {
@@ -14,7 +14,7 @@ const setupandstartservice = async () => {
   app.use(bodyParser.urlencoded({ extended: true }));
   //console.log("shubh")
   const channel = await createChannel();
-  subscribeMessage(channel, undefined, REMINDER_BINDING_KEY);
+  subscribeMessage(channel,emailservice , REMINDER_BINDING_KEY);
 
   // const PORT=3000;
   app.post("/api/v1/tickets", TicketController.create);

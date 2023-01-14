@@ -1,5 +1,5 @@
 const ticketservice=require('../services/emailservice');
-console.log("start")
+
 const create=async(req,res)=>{
     try {
         const response=await ticketservice.createNotification(req.body);
