@@ -44,14 +44,31 @@ const updateTickets = async (data, ticketid) => {
     throw error;
   }
 };
-const testingQueue = async (data) => {
-  console.log("inside service layer", data);
-  
+// const testingQueue = async (data) => {
+//   console.log("inside service layer", data);
+
+// };
+const subscribeEvents = async (payload) => {
+  let service = payload.service;
+  let data = payload.data;
+  switch (service) {
+    case "CREATE_TICKET":
+      await createNotification(data);
+      break;
+
+    case "SEND_BASIC_EMAIL":
+      await sendBasicEmail(data);
+      break;
+    default:
+      console.log("no valid events");
+      break;
+  }
 };
 module.exports = {
   updateTickets,
   sendBasicEmail,
   fetchPendingEmails,
   createNotification,
-  testingQueue,
+  //testingQueue,
+  subscribeEvents
 };

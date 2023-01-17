@@ -17,10 +17,9 @@ const subscribeMessage = async (channel, service, binding_key) => {
     console.log("received data");
     console.log(msg.content.toString());
     const payload = JSON.parse(msg.content.toString());
-    if (payload.service == "DEMO_SERVICE") {
-      console.log("call demo service");
-      service.testingQueue(payload);
-    }
+
+    service(payload);
+
     //  service(msg.content.toString());
     channel.ack(msg);
   });

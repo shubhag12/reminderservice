@@ -14,7 +14,7 @@ const setupandstartservice = async () => {
   app.use(bodyParser.urlencoded({ extended: true }));
   //console.log("shubh")
   const channel = await createChannel();
-  subscribeMessage(channel,emailservice , REMINDER_BINDING_KEY);
+  subscribeMessage(channel,emailservice.subscribeEvents , REMINDER_BINDING_KEY);
 
   // const PORT=3000;
   app.post("/api/v1/tickets", TicketController.create);
